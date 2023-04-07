@@ -1,0 +1,68 @@
+<h1>{{id? 'Update Info':'Registration From'}}</h1>
+
+<div class="FormBox m-5">
+    <form [formGroup]="myReactiveForm" (ngSubmit)="onSubmit()">
+        <div class="form-group mb-3">
+            <label class="form-label" for="firstName">First Name</label>
+            <input type="text" class="form-control" id="firstName" placeholder="Enter First Name"
+                formControlName="firstName">
+
+            <small class="text-danger"
+                *ngIf="!myReactiveForm.get('firstName')?.valid && myReactiveForm.get('firstName')?.touched">Enter valid name</small>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-label" for="lastName">Last Name</label>
+            <input type="text" class="form-control" id="lastName" placeholder="Enter Last Name"
+                formControlName="lastName">
+
+            <small class="text-danger"
+                *ngIf="!myReactiveForm.get('lastName')?.valid && myReactiveForm.get('lastName')?.touched">Enter valid name</small>
+        </div>
+
+        <!-- <div class="form-group mb-3">
+            <label class="form-label" for="mobile_no">Mobile Number</label>
+            <input type="text" class="form-control" id="mobile_no" placeholder="Enter Mobile Number"
+                formControlName="mobile_no">
+
+            <small class="text-danger"
+                *ngIf="!myReactiveForm.get('mobile_no')?.valid && myReactiveForm.get('mobile_no')?.touched">Enter valid number</small>
+        </div> -->
+
+        <div class="form-group mb-3">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter Email" formControlName="email">
+            <small class="text-danger"
+                *ngIf="!myReactiveForm.get('email')?.valid && myReactiveForm.get('email')?.touched">Enter Valid Email
+            </small>
+        </div>
+        <div class="form-group mb-3">
+            <label class="form-label" for="pass">Password</label>
+            <input type="password" class="form-control" id="pass" placeholder="Enter Password"
+                formControlName="password" maxlength="12">
+
+            <small class="text-danger"
+                *ngIf="!myReactiveForm.get('password')?.valid && myReactiveForm.get('password')?.touched">Enter Valid
+                Password</small>
+        </div>
+        <!-- <div class="form-group mb-3">
+            <label class="form-label">User Type</label>
+            <select class="form-control" formControlName="user_type">
+                <option value = 'Doctor'>Doctor</option>
+                <option value = 'Patient'>Patient</option>
+                <option value = 'Lab technician'>Lab technician</option>
+                <option value = 'Nurse'>Nurse</option>
+            </select>
+
+            <small class="text-danger"
+                *ngIf="!myReactiveForm.get('user_type')?.valid && myReactiveForm.get('user_type')?.touched">Select valid User Type</small>
+        </div> -->
+
+        <div class="form-group mb-3">
+            <label class="form-label">User Type</label><br>
+                <input class="form-check-input" type="checkbox" formArrayName="role" value="admin" (change)="onCheckboxChange($event)"/>Admin<br>
+                <input class="form-check-input" type="checkbox" formArrayName="role" value="user" (change)="onCheckboxChange($event)"/>User<br>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
